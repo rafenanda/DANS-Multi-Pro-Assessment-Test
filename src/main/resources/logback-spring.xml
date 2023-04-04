@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<property name="FILE_NAME" value="dans_assessment_test" />
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<!-- ini adalah pattern pembuatan log di console -->
+			<pattern>[%level] [%d{HH:mm:ss.SSS}] [%c] [%X{id}] %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/${FILE_NAME}.log</file>
+		<append>true</append>
+		<prudent>true</prudent>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- ini adalah pattern penamaan file log di server -->
+			<fileNamePattern>../logs/${FILE_NAME}-%d{yyyy-MM-dd}(%i).txt</fileNamePattern>
+			<maxFileSize>100MB</maxFileSize>
+			<maxHistory>60</maxHistory>
+			<totalSizeCap>20GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<!-- ini adalah pattern pembuatan file log di server -->
+			<pattern>[%level] [%d{HH:mm:ss.SSS}] [%c] [%X{id}] %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!-- <logger name="com.logging" level="debug" additivity="false">
+		<appender-ref ref="FILE-ROLLING" />
+	</logger> -->
+	<root level="INFO">
+		<appender-ref ref="FILE-ROLLING" />
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>
