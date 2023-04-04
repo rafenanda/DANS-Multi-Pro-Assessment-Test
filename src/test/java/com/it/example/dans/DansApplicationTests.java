@@ -1,10 +1,10 @@
-package com.it.teknisian.list.kipas;
+package com.it.example.dans;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class KipasApplicationTests {
+class DansApplicationTests {
 
 	@Test
 	void contextLoads() {
